@@ -20,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/aiedux/aiserver/issues"
   },
-  "homepage": "https://github.com/aiedux/aiserver#readme"
+  "homepage": "https://github.com/aiedux/aiserver#readme",
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "ejs": "^2.4.2",
+    "morgan": "*",
+    "redis": "*"
+  }
 }
