@@ -17,7 +17,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
-  res.send('Welcome!');
+  let title = 'Task List';
+  res.render('index', {
+    title: title
+  });
 });
 
 app.listen(3000);
