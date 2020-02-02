@@ -1,0 +1,24 @@
+{
+  "name": "aiserver",
+  "version": "1.0.0",
+  "description": "ai gitops server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aiedux/aiserver.git"
+  },
+  "keywords": [
+    "ai",
+    "gitops",
+    "server"
+  ],
+  "author": "Stefan Ianta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aiedux/aiserver/issues"
+  },
+  "homepage": "https://github.com/aiedux/aiserver#readme"
+}
