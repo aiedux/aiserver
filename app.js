@@ -25,8 +25,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
   let title = 'Task List';
-  res.render('index', {
-    title: title
+
+  // read all tasks entries from Redis db
+  client.lrange('tasks', 0, -1, function (err, reply) {
+    res.render('index', {
+      title: title,
+      tasks: reply
+    });
   });
 });
 
