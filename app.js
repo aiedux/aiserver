@@ -6,6 +6,13 @@ let redis = require('redis');
 
 let app = express();
 
+// Create Redis Client - Must have Redis server started with cmd: redis-server 
+let client = redis.createClient();
+
+client.on('connect', function () {
+  console.log('Redis Server Connected...');
+})
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
