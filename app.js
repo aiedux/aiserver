@@ -48,6 +48,25 @@ app.post('/task/add', function (req, res) {
   });
 });
 
+// deleting tasks
+app.post('/task/delete', function (req, res) {
+  let tasksToDel = req.body.tasks;
+
+  client.lrange('tasks', 0, -1, function (err, tasks) {
+    for (let i = 0; i < tasks.length; i++) {
+      // if task[i] is in tasksToDel array
+      if (tasksToDel.indexOf(tasks[i]) > -1) {
+        client.lrem('tasks', 0, tasks[i], function () {
+          if (err) {
+            console.log(err);
+          }
+        })
+      }
+    }
+    res.redirect('/');
+  })
+});
+
 app.listen(3000);
 console.log('Server Started On Port 3000...');
 
