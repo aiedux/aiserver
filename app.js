@@ -7,6 +7,7 @@ let redis = require('redis');
 let app = express();
 
 // Create Redis Client - Must have Redis server started with cmd: redis-server 
+// ToDo - Maybe rename client to redisClient ?!
 let client = redis.createClient();
 
 client.on('connect', function () {
@@ -65,6 +66,25 @@ app.post('/task/delete', function (req, res) {
     }
     res.redirect('/');
   })
+});
+
+// add Next Call hash to Redis 
+app.post('/call/add', function (req, res) {
+  let newCall = {};
+
+  newCall.name = req.body.name;
+  newCall.company = req.body.company;
+  newCall.phone = req.body.phone;
+  newCall.time = req.body.time;
+
+  client.hmset('call', ['name', newCall.name, 'company', newCall.company, 'phone', newCall.phone, 'time', newCall.time], function (err, reply) {
+    if (err) {
+      console.log(err);
+    }
+    console.log(reply);
+    res.redirect('/');
+  });
+
 });
 
 app.listen(3000);
