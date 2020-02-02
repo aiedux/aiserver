@@ -29,10 +29,15 @@ app.get('/', function (req, res) {
 
   // read all tasks entries from Redis db
   client.lrange('tasks', 0, -1, function (err, reply) {
-    res.render('index', {
-      title: title,
-      tasks: reply
-    });
+    // get all fields of the hash 'call'
+    client.hgetall('call', function (err, call) {
+      res.render('index', {
+        title: title,
+        tasks: reply,
+        call: call
+      });
+    })
+
   });
 });
 
