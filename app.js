@@ -18,6 +18,19 @@ client.on('connect', function () {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+let allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+}
+
+app.use(allowCrossDomain);
+
+app.options('/', function (req, res) {
+  res.header('Access-Control-Allow-Origin').send()
+});
+
 // middleware
 app.use(logger('dev'));
 app.use(bodyParser.json());
