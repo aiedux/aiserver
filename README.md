@@ -5,4 +5,4 @@
 npm install
 ```
 
-## launch - ToDo
+## launch - ToDo: add some default tasks and call
